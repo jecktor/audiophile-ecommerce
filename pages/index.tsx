@@ -2,13 +2,7 @@ import Head from 'next/head';
 import { client } from '../lib/client';
 import type { t_Banner, t_Category } from '../typings';
 
-import {
-  Header,
-  HeroBanner,
-  Categories,
-  ProductBanner,
-  Footer,
-} from '../components';
+import { HeroBanner, Categories, ProductBanner } from '../components';
 interface Props {
   heroBanner: t_Banner;
   banners: t_Banner[];
@@ -19,23 +13,14 @@ const Home = ({ heroBanner, banners, categories }: Props) => (
   <>
     <Head>
       <title>Home | Audiophile</title>
-      <meta
-        name="description"
-        content="Welcome to Audiophile, E-Commerce app made with Next.js"
-      />
-      <link rel="icon" href="/favicon.ico" />
     </Head>
-    <Header />
-    <main>
-      <HeroBanner bannerData={heroBanner} />
-      <Categories categoriesData={categories} />
-      <div className="flex flex-col-reverse gap-16 max-w-xs md:max-w-3xl lg:max-w-6xl mx-auto">
-        {banners.map((banner: t_Banner) => (
-          <ProductBanner key={banner._id} bannerData={banner} />
-        ))}
-      </div>
-    </main>
-    <Footer />
+    <HeroBanner bannerData={heroBanner} />
+    <Categories categoriesData={categories} />
+    <div className="flex flex-col-reverse gap-16 max-w-xs md:max-w-3xl lg:max-w-6xl mx-auto">
+      {banners.map((banner: t_Banner) => (
+        <ProductBanner key={banner._id} bannerData={banner} />
+      ))}
+    </div>
   </>
 );
 

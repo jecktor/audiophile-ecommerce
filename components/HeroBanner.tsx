@@ -23,6 +23,15 @@ const HeroBanner = ({ bannerData }: Props) => {
 
   return (
     <div className="relative" style={{ backgroundColor: bgColor }}>
+      {isImageBackground && (
+        <Image
+          className="absolute object-cover pointer-events-none lg:object-contain"
+          src={urlFor(image).url()}
+          alt=""
+          aria-hidden="true"
+          layout="fill"
+        />
+      )}
       <div
         className={`${
           isImageBackground
@@ -35,15 +44,7 @@ const HeroBanner = ({ bannerData }: Props) => {
             : 'url(/shared/pattern-circles.svg)',
         }}
       >
-        {isImageBackground ? (
-          <Image
-            className="absolute object-cover pointer-events-none lg:object-contain"
-            src={urlFor(image).url()}
-            alt=""
-            aria-hidden="true"
-            layout="fill"
-          />
-        ) : (
+        {!isImageBackground && (
           <div className="relative w-52 h-60 lg:w-[25rem] lg:h-[30rem] lg:mr-32">
             <Image
               src={urlFor(image).width(200).height(250).url()}
