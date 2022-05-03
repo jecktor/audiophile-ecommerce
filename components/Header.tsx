@@ -1,15 +1,28 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
+
+import Cart from './Cart';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [cartOpen, setCartOpen] = useState<boolean>(false);
+
+  const handleToggle = (
+    set: Dispatch<SetStateAction<boolean>>,
+    to: boolean
+  ) => {
+    setMenuOpen(false);
+    setCartOpen(false);
+
+    set(to);
+  };
 
   return (
-    <header className="bg-black flex justify-between items-center fixed w-full h-24 px-4 z-[1] lg:border-b lg:absolute lg:border-[#484848] lg:p-0 lg:w-[72rem] lg:left-1/2 lg:-ml-[36rem] lg:bg-transparent">
+    <header className="bg-black flex justify-between items-center fixed w-full h-24 px-4 z-[1] lg:border-b lg:absolute lg:border-secondary lg:p-0 lg:w-[72rem] lg:left-1/2 lg:-ml-[36rem] lg:bg-transparent">
       <button
         type="button"
-        onClick={() => setMenuOpen(!menuOpen)}
+        onClick={() => handleToggle(setMenuOpen, !menuOpen)}
         className="hover:filter-orange lg:hidden"
         aria-label="menu"
       >
@@ -58,9 +71,24 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <button type="button" className="hover:filter-orange" aria-label="cart">
-        <Image src="/shared/icon-cart.svg" width={23} height={20} alt="logo" />
+      <button
+        type="button"
+        onClick={() => handleToggle(setCartOpen, !cartOpen)}
+        className="relative"
+        aria-label="cart"
+      >
+        <Image
+          className="hover:filter-orange"
+          src="/shared/icon-cart.svg"
+          width={23}
+          height={20}
+          alt="logo"
+        />
+        <span className="absolute -top-2 -right-3 min-w-[1.25rem] w-fit h-5 bg-primary text-white text-sm rounded-full flex items-center justify-center pointer-events-none">
+          1
+        </span>
       </button>
+      {cartOpen && <Cart />}
     </header>
   );
 };

@@ -21,9 +21,9 @@ const Button = ({
     {isLink ? (
       <Link href={url}>
         <a
-          className={`${isLarge ? 'w-full' : 'w-44'} ${
+          className={`${isLarge ? 'block w-full' : 'w-44'} ${
             color == 'main'
-              ? 'hover:!bg-orange-300'
+              ? 'hover:!bg-[#FBAF85]'
               : color == 'black'
               ? 'hover:!bg-[#4C4C4C]'
               : 'hover:!bg-black hover:!text-white'
@@ -41,8 +41,8 @@ const Button = ({
       <button
         type={type}
         className={`${
-          isLarge ? 'w-full' : 'w-44'
-        } h-14 px-8 py-4 text-center uppercase font-bold text-sm tracking-widest hover:!bg-orange-300 whitespace-nowrap transition-colors z-0`}
+          isLarge ? 'block w-full' : 'w-44'
+        } h-14 px-8 py-4 text-center uppercase font-bold text-sm tracking-widest hover:!bg-[#FBAF85] whitespace-nowrap transition-colors z-0`}
         style={{
           backgroundColor: color == 'main' ? '#D87D4A' : color,
           color: color == 'transparent' ? 'black' : 'white',
