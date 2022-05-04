@@ -32,7 +32,7 @@ export default {
       to: { type: 'category' },
     },
     {
-      name: 'new',
+      name: 'isNew',
       title: 'Is this product new?',
       type: 'boolean',
     },

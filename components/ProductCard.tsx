@@ -9,6 +9,7 @@ interface Props {
   title: string;
   description: string;
   price: number;
+  isNew: boolean;
   reversed?: boolean;
 }
 
@@ -18,6 +19,7 @@ const ProductCard = ({
   title,
   description,
   price,
+  isNew,
   reversed,
 }: Props) => (
   <div
@@ -36,11 +38,20 @@ const ProductCard = ({
       />
     </div>
     <div className="text-center w-full flex flex-col items-center">
+      {isNew && (
+        <span className="mb-4 uppercase tracking-[0.6rem] text-primary text-sm md:mb-2 lg:text-lg lg:mb-4">
+          New product
+        </span>
+      )}
       <strong className="block text-3xl uppercase font-bold tracking-wide lg:text-5xl">
         {title}
       </strong>
-      <p className="mt-4 opacity-50 break-words leading-7">{description}</p>
-      <strong className="block my-8">$ {price.toLocaleString()}</strong>
+      <p className="mt-4 opacity-50 break-words leading-7 md:mt-2 lg:mt-4">
+        {description}
+      </p>
+      <strong className="block my-8 md:my-2 lg:my-8">
+        $ {price.toLocaleString()}
+      </strong>
       <Button
         isLink
         color="main"

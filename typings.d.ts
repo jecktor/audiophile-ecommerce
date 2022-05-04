@@ -15,7 +15,7 @@ export interface t_Product {
     current: string;
   };
   category: Category;
-  new: boolean;
+  isNew: boolean;
   price: number;
   description: string;
   features: string;

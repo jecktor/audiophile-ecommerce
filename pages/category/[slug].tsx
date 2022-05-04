@@ -61,6 +61,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     name,
     description,
     image,
+    isNew,
     price
   }
   `;

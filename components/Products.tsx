@@ -17,6 +17,7 @@ const Products = ({ productsData }: Props) => (
             title={product.name}
             description={product.description}
             price={product.price}
+            isNew={product.isNew}
             reversed
           />
         ) : (
@@ -26,6 +27,7 @@ const Products = ({ productsData }: Props) => (
             image={product.image}
             title={product.name}
             description={product.description}
+            isNew={product.isNew}
             price={product.price}
           />
         )}
