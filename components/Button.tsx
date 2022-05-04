@@ -21,13 +21,13 @@ const Button = ({
     {isLink ? (
       <Link href={url}>
         <a
-          className={`${isLarge ? 'block w-full' : 'w-44'} ${
+          className={`${isLarge ? 'w-full' : 'w-44'} ${
             color == 'main'
               ? 'hover:!bg-[#FBAF85]'
               : color == 'black'
               ? 'hover:!bg-[#4C4C4C]'
               : 'hover:!bg-black hover:!text-white'
-          } h-14 px-8 py-4 text-center uppercase font-bold text-sm tracking-widest whitespace-nowrap transition-colors z-0`}
+          } block h-14 px-8 py-4 text-center uppercase font-bold text-sm tracking-widest whitespace-nowrap transition-colors z-0`}
           style={{
             backgroundColor: color == 'main' ? '#D87D4A' : color,
             color: color == 'transparent' ? 'black' : 'white',
@@ -41,8 +41,8 @@ const Button = ({
       <button
         type={type}
         className={`${
-          isLarge ? 'block w-full' : 'w-44'
-        } h-14 px-8 py-4 text-center uppercase font-bold text-sm tracking-widest hover:!bg-[#FBAF85] whitespace-nowrap transition-colors z-0`}
+          isLarge ? 'w-full' : 'w-44'
+        } block h-14 px-8 py-4 text-center uppercase font-bold text-sm tracking-widest hover:!bg-[#FBAF85] whitespace-nowrap transition-colors z-0`}
         style={{
           backgroundColor: color == 'main' ? '#D87D4A' : color,
           color: color == 'transparent' ? 'black' : 'white',

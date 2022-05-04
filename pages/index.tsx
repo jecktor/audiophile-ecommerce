@@ -41,7 +41,7 @@ export const getServerSideProps = async () => {
   const heroBanner: t_Banner = await client.fetch(heroBannerQuery);
 
   const bannerQuery = `
-  *[_type == "banner" && (isHeroBanner == false || isHeroBanner == null)] {
+  *[_type == "banner" && isHeroBanner != true] {
     _id,
     title,
     url,
