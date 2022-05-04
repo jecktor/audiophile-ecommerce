@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { client } from '../lib/client';
 import type { t_Banner, t_Category } from '../typings';
 
-import { HeroBanner, Categories, ProductBanner } from '../components';
+import { HeroBanner, CategoryList, ProductBanner } from '../components';
 interface Props {
   heroBanner: t_Banner;
   banners: t_Banner[];
@@ -15,7 +15,7 @@ const Home = ({ heroBanner, banners, categories }: Props) => (
       <title>Home | Audiophile</title>
     </Head>
     <HeroBanner bannerData={heroBanner} />
-    <Categories categoriesData={categories} />
+    <CategoryList categoriesData={categories} />
     <div className="flex flex-col-reverse gap-16 max-w-xs md:max-w-3xl lg:max-w-6xl mx-auto">
       {banners.map((banner: t_Banner) => (
         <ProductBanner key={banner._id} bannerData={banner} />
@@ -64,7 +64,6 @@ export const getServerSideProps = async () => {
     image
   }
   `;
-
   const categories: t_Category[] = await client.fetch(categoryQuery);
 
   return {

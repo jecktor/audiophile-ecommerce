@@ -2,7 +2,7 @@ import { client } from '../../lib/client';
 import type { t_Category, t_Product } from '../../typings';
 import type { GetStaticProps } from 'next';
 
-import { Prodcuts } from '../../components';
+import { ProdcutList } from '../../components';
 
 interface Props {
   category: t_Category;
@@ -16,7 +16,7 @@ const CategoryPage = ({ category, products }: Props) => (
         {category.name}
       </h1>
     </div>
-    <Prodcuts productsData={products} />
+    <ProdcutList productsData={products} />
   </>
 );
 

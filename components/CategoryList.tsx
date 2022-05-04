@@ -6,7 +6,7 @@ interface Props {
   categoriesData: t_Category[];
 }
 
-const Categories = ({ categoriesData }: Props) => (
+const CategoryList = ({ categoriesData }: Props) => (
   <div className="max-w-xs mx-auto my-32 md:my-40 md:max-w-3xl lg:max-w-6xl">
     <ul className="flex flex-col-reverse items-center gap-20 md:flex-row-reverse md:gap-3 md:justify-between">
       {categoriesData.map(category => (
@@ -22,4 +22,4 @@ const Categories = ({ categoriesData }: Props) => (
   </div>
 );
 
-export default Categories;
+export default CategoryList;

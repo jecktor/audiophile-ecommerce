@@ -5,7 +5,7 @@ interface Props {
   productsData: t_Product[];
 }
 
-const Products = ({ productsData }: Props) => (
+const ProductList = ({ productsData }: Props) => (
   <div className="flex flex-col gap-10 mx-auto max-w-xs md:max-w-3xl lg:gap-12 lg:max-w-6xl">
     {productsData.map((product, idx) => (
       <>
@@ -36,4 +36,4 @@ const Products = ({ productsData }: Props) => (
   </div>
 );
 
-export default Products;
+export default ProductList;

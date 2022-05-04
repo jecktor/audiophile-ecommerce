@@ -11,7 +11,7 @@ interface Props {
 
 const CategoryCard = ({ slug, image, name }: Props) => (
   <Link href={`/category/${slug}`}>
-    <a className="block w-0">
+    <a className="block w-0 hover:text-primary">
       <div className="relative w-fit">
         <div className="absolute -top-14 left-20 md:left-8 lg:left-20 lg:-top-8">
           <Image
