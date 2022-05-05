@@ -15,4 +15,4 @@ Requires @sanity/cli
 npm install -g @sanity/cli
 ```
 
-Be sure to run `npm install` in the project and sanity directories before getting started, then run `npm run dev` in the project directory and `sanity start` in the sanity directory.
+Be sure to run `npm install --legacy-peer-deps` in the project and sanity directories before getting started, then run `npm run dev` in the project directory and `sanity start` in the sanity directory.
