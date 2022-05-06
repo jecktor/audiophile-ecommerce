@@ -22,7 +22,7 @@ const CategoryCard = ({ slug, image, name }: Props) => (
             height={170}
           />
         </div>
-        <div className="bg-[#F1F1F1] flex flex-col items-center justify-end w-80 h-40 rounded-lg uppercase font-bold tracking-widest md:w-56 md:h-40 lg:w-[22rem] lg:h-52 lg:text-lg">
+        <div className="bg-[#F1F1F1] flex flex-col items-center justify-end w-80 h-40 rounded-lg uppercase font-bold tracking-widest md:w-56 lg:w-[22rem] lg:h-52 lg:text-lg">
           <strong className="block">{name}</strong>
           <div className="mt-2 mb-6">
             <span className="text-[#797979] mr-3">Shop</span>

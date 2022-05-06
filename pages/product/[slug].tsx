@@ -89,16 +89,64 @@ const ProductDetails = ({ product, categories }: Props) => {
             </h2>
             <ul>
               {includes.map(item => (
-                <li key={item._key} className="mt-4">
+                <li key={item._key} className="mt-4 font-semibold">
                   <span className="text-primary mr-4">{item.quantity}x</span>
-                  <p className="inline opacity-50 font-semibold">{item.item}</p>
+                  <p className="inline opacity-50">{item.item}</p>
                 </li>
               ))}
             </ul>
           </div>
         </section>
-        <section>Gallery</section>
-        <section>You may also like</section>
+        <section className="mb-20 w-full flex flex-col gap-8 md:grid md:grid-rows-2 md:grid-cols-5 md:grid-template-gallery md:h-[25rem] lg:h-[40rem]">
+          {gallery.map((image, idx) => (
+            <div
+              key={idx}
+              style={{ gridArea: `i${idx + 1}` }}
+              className="relative w-full h-48 rounded-lg overflow-hidden md:h-full"
+            >
+              <Image
+                className="object-cover object-right"
+                src={urlFor(image).url()}
+                alt=""
+                aria-hidden="true"
+                layout="fill"
+              />
+            </div>
+          ))}
+        </section>
+        <section className="text-center">
+          <h3 className="mb-12 uppercase text-3xl font-bold tracking-wide lg:text-4xl">
+            You may also like
+          </h3>
+          <div className="flex flex-col items-center justify-center gap-16 md:gap-8 md:flex-row lg:gap-4">
+            {related.map(product => (
+              <div
+                key={product._id}
+                className="w-80 h-96 flex flex-col items-center justify-between"
+              >
+                <div className="p-4 bg-[#F1F1F1] rounded-lg">
+                  <Image
+                    className="object-contain"
+                    src={urlFor(product.image).url()}
+                    alt=""
+                    aria-hidden="true"
+                    width={170}
+                    height={170}
+                  />
+                </div>
+                <strong className="block uppercase text-2xl font-bold tracking-wide lg:text-3xl">
+                  {product.name}
+                </strong>
+                <Button
+                  isLink
+                  color="main"
+                  content="See product"
+                  url={`/product/${product.slug.current}`}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
       <CategoryList categoriesData={categories} />
     </>
@@ -138,7 +186,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     features,
     includes,
     gallery,
-    related
+    related[] -> {
+      _id,
+      name,
+      image,
+      slug
+    }
   }
   `;
   const product: t_Product = await client.fetch(productQuery, {

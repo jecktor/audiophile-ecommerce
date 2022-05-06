@@ -8,4 +8,10 @@
     filter: invert(50%) sepia(82%) saturate(370%) hue-rotate(337deg)
       brightness(95%) contrast(88%);
   }
+
+  .grid-template-gallery {
+    grid-template-areas:
+      'i1 i1 i3 i3 i3'
+      'i2 i2 i3 i3 i3';
+  }
 }
