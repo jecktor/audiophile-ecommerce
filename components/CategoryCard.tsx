@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { urlFor } from '../lib/client';
-import type { t_Category } from '../typings';
 
 interface Props {
   slug: string;

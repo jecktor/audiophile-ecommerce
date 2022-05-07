@@ -1,5 +1,6 @@
+import Head from 'next/head';
 import { client } from '../../lib/client';
-import type { t_Category, t_Product } from '../../typings';
+import type { t_Category, t_Product } from '../../typings/api';
 import type { GetStaticProps } from 'next';
 
 import { ProdcutList } from '../../components';
@@ -11,6 +12,9 @@ interface Props {
 
 const CategoryPage = ({ category, products }: Props) => (
   <>
+    <Head>
+      <title>{category.name} | Audiophile</title>
+    </Head>
     <div className="bg-[#191919] h-80 mb-20 pt-24 grid place-items-center lg:mb-40">
       <h1 className="text-white uppercase text-5xl font-bold tracking-wider">
         {category.name}

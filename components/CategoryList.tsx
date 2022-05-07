@@ -1,4 +1,4 @@
-import type { t_Category } from '../typings';
+import type { t_Category } from '../typings/api';
 
 import CategoryCard from './CategoryCard';
 

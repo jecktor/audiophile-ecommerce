@@ -1,8 +1,12 @@
+import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { toast } from 'react-hot-toast';
 import { client, urlFor } from '../../lib/client';
+import { useStateContext } from '../../context/StateContext';
+import { ActionKind } from '../../context/reducers';
 import type { GetStaticProps } from 'next';
-import type { t_Product, t_Category } from '../../typings';
+import type { t_Product, t_Category } from '../../typings/api';
 
 import { Counter, Button, CategoryList } from '../../components';
 
@@ -13,8 +17,13 @@ interface Props {
 
 const ProductDetails = ({ product, categories }: Props) => {
   const router = useRouter();
+  const {
+    state: { qty },
+    dispatch,
+  } = useStateContext();
 
   const {
+    _id,
     name,
     image,
     isNew,
@@ -28,6 +37,9 @@ const ProductDetails = ({ product, categories }: Props) => {
 
   return (
     <>
+      <Head>
+        <title>{product.name} | Audiophile</title>
+      </Head>
       <div className="bg-[#191919] h-24"></div>
       <div className="mx-auto max-w-xs md:max-w-3xl lg:max-w-6xl">
         <button
@@ -64,8 +76,31 @@ const ProductDetails = ({ product, categories }: Props) => {
               $ {price.toLocaleString()}
             </strong>
             <div className="flex flex-wrap gap-5 md:flex-nowrap">
-              <Counter />
-              <Button type="button" color="main" content="Add to cart" />
+              <Counter
+                displayNumber={qty}
+                onDecrease={() => dispatch({ type: ActionKind.DecreaseQty })}
+                onIncrease={() => dispatch({ type: ActionKind.IncreaseQty })}
+              />
+              <Button
+                onClick={() => {
+                  dispatch({
+                    type: ActionKind.AddToCart,
+                    payload: {
+                      _id: _id,
+                      name: name,
+                      image: image,
+                      price: price,
+                      quantity: qty,
+                    },
+                  });
+                  toast.success(
+                    `${qty > 1 ? qty : ''} ${name} added to the cart.`
+                  );
+                }}
+                type="button"
+                color="main"
+                content="Add to cart"
+              />
             </div>
           </div>
         </div>
@@ -178,6 +213,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const productQuery = `
   *[_type == "product" && slug.current == $slug][0] {
+    _id,
     name,
     image,
     isNew,

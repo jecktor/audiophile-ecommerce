@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { urlFor } from '../lib/client';
-import type { t_Banner } from '../typings';
+import type { t_Banner } from '../typings/api';
 
 import Button from './Button';
 

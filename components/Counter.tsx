@@ -1,10 +1,14 @@
 import Image from 'next/image';
+import { MouseEventHandler } from 'react';
 
 interface Props {
   isSmall?: boolean;
+  displayNumber: number;
+  onIncrease: MouseEventHandler<HTMLButtonElement>;
+  onDecrease: MouseEventHandler<HTMLButtonElement>;
 }
 
-const Counter = ({ isSmall }: Props) => (
+const Counter = ({ isSmall, displayNumber, onIncrease, onDecrease }: Props) => (
   <div
     className={`${
       isSmall ? 'w-28 h-10' : 'w-40 h-14'
@@ -13,7 +17,8 @@ const Counter = ({ isSmall }: Props) => (
     <button
       type="button"
       className="hover:filter-orange"
-      aria-label="Remove item"
+      aria-label="Decrease quantity"
+      onClick={onDecrease}
     >
       <Image
         src="/shared/icon-minus.svg"
@@ -23,8 +28,13 @@ const Counter = ({ isSmall }: Props) => (
         height={4}
       />
     </button>
-    <strong className="font-bold text-lg">1</strong>
-    <button type="button" className="hover:filter-orange" aria-label="Add item">
+    <strong className="font-bold text-lg">{displayNumber}</strong>
+    <button
+      type="button"
+      className="hover:filter-orange"
+      aria-label="Increase quantity"
+      onClick={onIncrease}
+    >
       <Image
         src="/shared/icon-plus.svg"
         alt=""

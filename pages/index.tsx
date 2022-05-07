@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { client } from '../lib/client';
-import type { t_Banner, t_Category } from '../typings';
+import type { t_Banner, t_Category } from '../typings/api';
 
 import { HeroBanner, CategoryList, ProductBanner } from '../components';
 interface Props {

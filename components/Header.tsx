@@ -1,12 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Dispatch, SetStateAction, useState } from 'react';
+import { useStateContext } from '../context/StateContext';
 
 import Cart from './Cart';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [cartOpen, setCartOpen] = useState<boolean>(false);
+  const {
+    state: {
+      cart: { totalQuantities },
+    },
+  } = useStateContext();
 
   const handleToggle = (
     set: Dispatch<SetStateAction<boolean>>,
@@ -84,9 +90,11 @@ const Header = () => {
           height={20}
           alt="logo"
         />
-        <span className="absolute -top-2 -right-3 min-w-[1.25rem] w-fit h-5 bg-primary text-white text-sm rounded-full flex items-center justify-center pointer-events-none">
-          1
-        </span>
+        {totalQuantities > 0 && (
+          <span className="absolute -top-2 -right-3 min-w-[1.25rem] w-fit h-5 bg-primary text-white text-sm rounded-full flex items-center justify-center pointer-events-none">
+            {totalQuantities}
+          </span>
+        )}
       </button>
       {cartOpen && <Cart />}
     </header>

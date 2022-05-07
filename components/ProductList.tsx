@@ -1,5 +1,5 @@
 import ProductCard from './ProductCard';
-import type { t_Product } from '../typings';
+import type { t_Product } from '../typings/api';
 
 interface Props {
   productsData: t_Product[];

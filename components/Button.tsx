@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { MouseEventHandler } from 'react';
 
 interface Props {
   content: string;
@@ -7,6 +8,7 @@ interface Props {
   isLarge?: boolean;
   url?: string;
   type?: 'button' | 'submit' | 'reset';
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 const Button = ({
@@ -16,6 +18,7 @@ const Button = ({
   isLarge = false,
   url = '/',
   type = 'button',
+  onClick,
 }: Props) => (
   <>
     {isLink ? (
@@ -39,6 +42,7 @@ const Button = ({
       </Link>
     ) : (
       <button
+        onClick={onClick}
         type={type}
         className={`${
           isLarge ? 'w-full' : 'w-44'
