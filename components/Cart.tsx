@@ -1,4 +1,5 @@
 import { useStateContext } from '../context/StateContext';
+import { ActionKind } from '../context/reducers';
 
 import { Button } from '.';
 import CartItem from './CartItem';
@@ -19,7 +20,11 @@ const Cart = () => {
             }`}
           </strong>
           {cart.cartItems.length > 0 && (
-            <button type="button" className="text-secondary hover:text-primary">
+            <button
+              type="button"
+              className="text-secondary hover:text-primary"
+              onClick={() => dispatch({ type: ActionKind.EmptyCart })}
+            >
               Remove all
             </button>
           )}
@@ -27,13 +32,7 @@ const Cart = () => {
         <div className="flex flex-col gap-3 my-4">
           {cart.cartItems.length > 0 ? (
             cart.cartItems.map(item => (
-              <CartItem
-                key={item._id}
-                image={item.image}
-                name={item.name}
-                price={item.price * item.quantity}
-                quantity={item.quantity}
-              />
+              <CartItem key={item._id} product={item} />
             ))
           ) : (
             <p className="my-16 text-center font-semibold opacity-50">
