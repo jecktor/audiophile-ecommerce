@@ -46,7 +46,7 @@ const ProductCard = ({
       <strong className="block text-3xl uppercase font-bold tracking-wide lg:text-5xl">
         {title}
       </strong>
-      <p className="mt-4 opacity-50 break-words leading-7 md:mt-2 lg:mt-4">
+      <p className="mt-4 text-black/50 break-words leading-7 md:mt-2 lg:mt-4">
         {description}
       </p>
       <strong className="block my-8 md:my-2 lg:my-8">

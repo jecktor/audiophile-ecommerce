@@ -10,4 +10,6 @@ export interface t_Cart {
   cartItems: t_CartProduct[];
   totalPrice: number;
   totalQuantities: number;
+  shippingCost: number;
+  vatCost: number;
 }

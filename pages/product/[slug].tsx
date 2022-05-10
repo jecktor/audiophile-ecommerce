@@ -35,6 +35,20 @@ const ProductDetails = ({ product, categories }: Props) => {
     related,
   } = product;
 
+  const handleAddToCart = () => {
+    dispatch({
+      type: ActionKind.AddToCart,
+      payload: {
+        _id: _id,
+        name: name,
+        image: image,
+        price: price,
+        quantity: qty,
+      },
+    });
+    toast.success(`${qty > 1 ? qty : ''} ${name} added to the cart.`);
+  };
+
   return (
     <>
       <Head>
@@ -44,7 +58,7 @@ const ProductDetails = ({ product, categories }: Props) => {
       <div className="mx-auto max-w-xs md:max-w-3xl lg:max-w-6xl">
         <button
           type="button"
-          className="my-10 opacity-50 tracking-wide hover:opacity-100 hover:text-primary"
+          className="my-10 text-black/50 tracking-wide hover:opacity-100 hover:text-primary"
           onClick={() => router.back()}
         >
           Go Back
@@ -69,7 +83,7 @@ const ProductDetails = ({ product, categories }: Props) => {
             <h1 className="text-3xl uppercase font-bold tracking-wide lg:text-5xl">
               {name}
             </h1>
-            <p className="mt-4 opacity-50 font-semibold break-words leading-7 md:mt-2 lg:mt-4">
+            <p className="mt-4 text-black/50 font-semibold break-words leading-7 md:mt-2 lg:mt-4">
               {description}
             </p>
             <strong className="block my-8 text-lg md:my-2 lg:my-8">
@@ -82,21 +96,7 @@ const ProductDetails = ({ product, categories }: Props) => {
                 onIncrease={() => dispatch({ type: ActionKind.IncreaseQty })}
               />
               <Button
-                onClick={() => {
-                  dispatch({
-                    type: ActionKind.AddToCart,
-                    payload: {
-                      _id: _id,
-                      name: name,
-                      image: image,
-                      price: price,
-                      quantity: qty,
-                    },
-                  });
-                  toast.success(
-                    `${qty > 1 ? qty : ''} ${name} added to the cart.`
-                  );
-                }}
+                onClick={handleAddToCart}
                 type="button"
                 color="main"
                 content="Add to cart"
@@ -112,7 +112,7 @@ const ProductDetails = ({ product, categories }: Props) => {
             {features.split('\\n').map(
               (paragraph, idx) =>
                 paragraph && (
-                  <p key={idx} className="font-semibold opacity-50 mt-4">
+                  <p key={idx} className="font-semibold text-black/50 mt-4">
                     {paragraph}
                   </p>
                 )
@@ -126,7 +126,7 @@ const ProductDetails = ({ product, categories }: Props) => {
               {includes.map(item => (
                 <li key={item._key} className="mt-4 font-semibold">
                   <span className="text-primary mr-4">{item.quantity}x</span>
-                  <p className="inline opacity-50">{item.item}</p>
+                  <p className="inline text-black/50">{item.item}</p>
                 </li>
               ))}
             </ul>

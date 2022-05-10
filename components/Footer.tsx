@@ -19,7 +19,7 @@ const Footer = () => (
         <h3 className="text-3xl uppercase font-bold tracking-wide lg:text-5xl">
           Bringing you the <span className="text-primary">best</span> audio gear
         </h3>
-        <p className="mt-8 opacity-50 font-semibold break-words leading-7 md:mt-4 lg:mt-1 lg:max-w-lg">
+        <p className="mt-8 text-black/50 font-semibold break-words leading-7 md:mt-4 lg:mt-1 lg:max-w-lg">
           Located at the heart of New York City, Audiophile is the premier store
           for high end headphones, earphones, speakers, and audio accessories.
           We have a large showroom and luxury demonstration rooms available for
@@ -68,14 +68,14 @@ const Footer = () => (
           </nav>
         </div>
         <div className="mb-10 md:m-0 font-semibold">
-          <p className="opacity-50 break-words leading-7 max-w-md mx-auto md:max-w-none md:mx-0 lg:max-w-2xl">
+          <p className="text-white/50 break-words leading-7 max-w-md mx-auto md:max-w-none md:mx-0 lg:max-w-2xl">
             Audiophile is an all in one stop to fulfill your audio needs.
             We&apos;re a small team of music lovers and sound specialists who
             are devoted to helping you get the most out of personal audio. Come
             and visit our demo facility - we&apos;re open 7 days a week.
           </p>
           <div className="md:flex justify-between md:my-8">
-            <p className="opacity-50 my-5 md:m-0">
+            <p className="text-white/50 my-5 md:m-0">
               Copyright 2022. All Rights Reserved
             </p>
             <div className="flex justify-center gap-5">

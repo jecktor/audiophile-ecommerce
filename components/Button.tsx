@@ -6,6 +6,7 @@ interface Props {
   color: 'main' | 'black' | 'transparent';
   isLink?: boolean;
   isLarge?: boolean;
+  form?: string;
   url?: string;
   type?: 'button' | 'submit' | 'reset';
   onClick?: MouseEventHandler<HTMLButtonElement>;
@@ -16,6 +17,7 @@ const Button = ({
   color,
   isLink = false,
   isLarge = false,
+  form,
   url = '/',
   type = 'button',
   onClick,
@@ -44,9 +46,14 @@ const Button = ({
       <button
         onClick={onClick}
         type={type}
-        className={`${
-          isLarge ? 'w-full' : 'w-44'
-        } block h-14 px-8 py-4 text-center uppercase font-bold text-sm tracking-widest hover:!bg-[#FBAF85] whitespace-nowrap transition-colors z-0`}
+        form={form}
+        className={`${isLarge ? 'w-full' : 'w-44'} ${
+          color == 'main'
+            ? 'hover:!bg-[#FBAF85]'
+            : color == 'black'
+            ? 'hover:!bg-[#4C4C4C]'
+            : 'hover:!bg-black hover:!text-white'
+        } block h-14 px-8 py-4 text-center uppercase font-bold text-sm tracking-widest whitespace-nowrap transition-colors z-0`}
         style={{
           backgroundColor: color == 'main' ? '#D87D4A' : color,
           color: color == 'transparent' ? 'black' : 'white',

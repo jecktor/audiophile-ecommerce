@@ -18,6 +18,8 @@ const initialState: State = {
     cartItems: [],
     totalPrice: 0,
     totalQuantities: 0,
+    shippingCost: 0,
+    vatCost: 0,
   },
   qty: 1,
 };

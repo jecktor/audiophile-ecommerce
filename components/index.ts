@@ -3,6 +3,7 @@ export { default as CategoryList } from './CategoryList';
 export { default as ProdcutList } from './ProductList';
 export { default as HeroBanner } from './HeroBanner';
 export { default as Counter } from './Counter';
+export { default as Success } from './Success';
 export { default as Layout } from './Layout';
 export { default as Header } from './Header';
 export { default as Footer } from './Footer';

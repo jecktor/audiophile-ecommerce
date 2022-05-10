@@ -1,3 +1,4 @@
+import { toast } from 'react-hot-toast';
 import { useStateContext } from '../context/StateContext';
 import { ActionKind } from '../context/reducers';
 
@@ -9,6 +10,11 @@ const Cart = () => {
     state: { cart },
     dispatch,
   } = useStateContext();
+
+  const handleEmptyCart = () => {
+    dispatch({ type: ActionKind.EmptyCart });
+    toast.error('Emptied the cart.');
+  };
 
   return (
     <div className="absolute left-1/2 -translate-x-1/2 top-full bg-white rounded-lg shadow-xl min-h-[18rem] w-[90%] mt-3 md:mr-3 md:max-w-lg md:left-auto md:translate-x-0 md:right-0 lg:mr-0">
@@ -23,7 +29,7 @@ const Cart = () => {
             <button
               type="button"
               className="text-secondary hover:text-primary"
-              onClick={() => dispatch({ type: ActionKind.EmptyCart })}
+              onClick={handleEmptyCart}
             >
               Remove all
             </button>
@@ -35,7 +41,7 @@ const Cart = () => {
               <CartItem key={item._id} product={item} />
             ))
           ) : (
-            <p className="my-16 text-center font-semibold opacity-50">
+            <p className="my-16 text-center font-semibold text-black/50">
               Your cart is empty.
             </p>
           )}

@@ -43,6 +43,8 @@ const cartReducer = (cart: t_Cart, action: CartActions): t_Cart => {
         totalPrice:
           cart.totalPrice + action.payload.price * action.payload.quantity,
         totalQuantities: cart.totalQuantities + action.payload.quantity,
+        shippingCost: 30,
+        vatCost: cart.totalPrice * 0.2,
       };
 
       const productIndex = cart.cartItems.findIndex(
@@ -98,12 +100,16 @@ const cartReducer = (cart: t_Cart, action: CartActions): t_Cart => {
         totalPrice:
           cart.totalPrice + action.payload.price * action.payload.quantity,
         totalQuantities: cart.totalQuantities + action.payload.quantity,
+        shippingCost: cart.totalPrice > 0 ? 30 : 0,
+        vatCost: cart.totalPrice * 0.2,
       };
     case ActionKind.EmptyCart:
       return {
         cartItems: [],
         totalPrice: 0,
         totalQuantities: 0,
+        shippingCost: 0,
+        vatCost: 0,
       };
     default:
       return cart;
